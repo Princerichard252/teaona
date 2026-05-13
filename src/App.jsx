@@ -11,7 +11,7 @@ import Connect from "./components/sections/Connect";
 
 function App() {
   return (
-    <ReactLenis root options={{ smoothTouch: true }}>
+    <ReactLenis root>
       <div className="relative min-h-screen w-full bg-[#020617] text-white">
         {/* 1. Grain Overlay */}
         <div className="grain-overlay pointer-events-none" />
