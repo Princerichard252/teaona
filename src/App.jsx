@@ -22,12 +22,12 @@ function App() {
         <DynamicIsland />
 
         {/* 3. 3D Background Canvas */}
-        <div className="scene-shell fixed inset-0 z-0">
+        <div className="scene-shell fixed inset-0 z-0 pointer-events-none">
           <Scene />
         </div>
 
-        {/* 4. HTML Overlay Sections (Must have pointer-events-none so mouse reaches canvas) */}
-        <div className="app-scroll pointer-events-none relative z-10 w-full overflow-x-hidden">
+        {/* 4. HTML Overlay Sections */}
+        <div className="app-scroll relative z-10 w-full overflow-x-hidden">
           
           <div className="w-full">
             <Hero />
