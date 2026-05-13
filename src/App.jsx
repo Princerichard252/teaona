@@ -1,39 +1,57 @@
+import { ReactLenis } from '@studio-freight/react-lenis';
 import Scene from "./canvas/Scene";
 import DynamicIsland from "./components/layout/DynamicIsland";
 import Preloader from "./components/layout/Preloader";
 import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
+import Services from "./components/sections/Services";
+import Projects from "./components/sections/Projects";
+import ExperienceSection from "./components/sections/ExperienceSection";
+import Connect from "./components/sections/Connect";
 
 function App() {
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-[#020617] text-white">
-      {/* 1. Grain Overlay */}
-      <div className="grain-overlay" />
+    <ReactLenis root options={{ smoothTouch: true }}>
+      <div className="relative min-h-screen w-full bg-[#020617] text-white">
+        {/* 1. Grain Overlay */}
+        <div className="grain-overlay pointer-events-none" />
 
-      <Preloader />
-      
-      {/* 2. Navigation */}
-      <DynamicIsland />
-
-      {/* 3. 3D Background Canvas */}
-      <div className="scene-shell fixed inset-0 z-0">
-        <Scene />
-      </div>
-
-      {/* 4. HTML Overlay Sections (Must have pointer-events-none so mouse reaches canvas) */}
-      <div className="app-scroll pointer-events-none relative z-10 h-screen snap-y snap-proximity overflow-y-auto overflow-x-hidden">
+        <Preloader />
         
-        <div className="snap-start h-screen w-full">
-          <Hero />
+        {/* 2. Navigation */}
+        <DynamicIsland />
+
+        {/* 3. 3D Background Canvas */}
+        <div className="scene-shell fixed inset-0 z-0">
+          <Scene />
         </div>
-        
-        {/* Placeholders for remaining sections */}
-        <div id="about" className="snap-start h-screen w-full" />
-        <div id="services" className="snap-start h-screen w-full" />
-        <div id="projects" className="snap-start h-screen w-full" />
-        <div id="impact" className="snap-start h-screen w-full" />
-        <div id="connect" className="snap-start h-screen w-full" />
+
+        {/* 4. HTML Overlay Sections (Must have pointer-events-none so mouse reaches canvas) */}
+        <div className="app-scroll pointer-events-none relative z-10 w-full overflow-x-hidden">
+          
+          <div className="w-full">
+            <Hero />
+          </div>
+          
+          {/* Placeholders for remaining sections */}
+          <div className="w-full">
+            <About />
+          </div>
+          <div className="w-full">
+            <Services />
+          </div>
+          <div className="w-full">
+            <Projects />
+          </div>
+          <div className="w-full">
+            <ExperienceSection />
+          </div>
+          <div className="w-full">
+            <Connect />
+          </div>
+        </div>
       </div>
-    </div>
+    </ReactLenis>
   );
 }
 

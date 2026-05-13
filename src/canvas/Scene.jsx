@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import { Preload, ScrollControls } from "@react-three/drei";
+import { Preload } from "@react-three/drei";
 import { EffectComposer, Bloom, Noise, Vignette } from "@react-three/postprocessing";
 import Experience from "./Experience";
 
@@ -13,10 +13,7 @@ export default function Scene() {
       dpr={[1, 2]}
     >
       <Suspense fallback={null}>
-        {/* Pages = Number of scrollable sections */}
-        <ScrollControls pages={6} damping={0.25}>
-          <Experience />
-        </ScrollControls>
+        <Experience />
       </Suspense>
 
       {/* Post-Processing for the "Cool" Factor */}

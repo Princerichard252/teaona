@@ -1,20 +1,24 @@
-import { useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
-import HeroScene from "./sections/HeroScene";
 
 export default function Experience() {
-  const scrollData = useScroll();
   const groupRef = useRef();
 
   useFrame((state) => {
-    const offset = scrollData.offset;
+    // Read directly from window inside useFrame to avoid React state re-renders!
+    const scrollY = window.scrollY;
+    
+    // Calculate normalized scroll offset (0 to 1 over approx 5 screens)
+    const maxScroll = window.innerHeight * 5;
+    const offset = Math.min(scrollY / maxScroll, 1);
 
     // Smoothly pull the camera down and away as the user scrolls
-    state.camera.position.z = THREE.MathUtils.lerp(8, 4, offset);
-    state.camera.position.y = THREE.MathUtils.lerp(0, -10, offset);
-    state.camera.lookAt(0, -offset * 10, 0);
+    state.camera.position.z = THREE.MathUtils.lerp(state.camera.position.z, 8 - (offset * 4), 0.1);
+    state.camera.position.y = THREE.MathUtils.lerp(state.camera.position.y, -offset * 10, 0.1);
+    
+    const currentLookAtY = THREE.MathUtils.lerp(0, -offset * 10, 0.1);
+    state.camera.lookAt(0, currentLookAtY, 0);
   });
 
   return (

@@ -6,7 +6,7 @@ const navItems =[
   { label: "About", href: "#about", icon: "spark" },
   { label: "Services", href: "#services", icon: "tools" },
   { label: "Projects", href: "#projects", icon: "chart" },
-  { label: "Impact", href: "#impact", icon: "pulse" },
+  { label: "Experience", href: "#experience", icon: "experience" },
   { label: "Connect", href: "#connect", icon: "mail" },
 ];
 
@@ -59,6 +59,12 @@ function NavIcon({ name }) {
         <path d="M4 13h3l2-6 4 12 2-6h5" />
         <path d="M20 5v4" />
         <path d="M18 7h4" />
+      </>
+    ),
+    experience: (
+      <>
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
       </>
     ),
     mail: (
